@@ -1,0 +1,13 @@
+venv/
+build/
+dist/
+releases/
+installer/
+__pycache__/
+*.pyc
+*.spec
+main.py
+icons.py
+publish.py
+README_PUBLISH.md
+loupe.ico
