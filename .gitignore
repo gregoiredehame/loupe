@@ -11,3 +11,9 @@ icons.py
 publish.py
 README_PUBLISH.md
 loupe.ico
+fonts/
+lang.py
+formula.py
+sheet.py
+word.py
+publish.log

@@ -4,9 +4,9 @@
 
 # Loupe
 
-**A layered image and PDF editor for Windows.**
+**Pictures, PDFs, spreadsheets and pages, in one window.**
 
-Paint, retouch, lay out, sign and export. Open a PDF and edit its text where it sits.
+Paint, retouch, lay out, add up, sign and export. Open a PDF and edit its text where it sits.
 No subscription, no account, no cloud.
 
 [![Latest release](https://img.shields.io/github/v/release/gregoiredehame/loupe?label=download&color=2f6fe0)](../../releases/latest)
@@ -22,18 +22,22 @@ No subscription, no account, no cloud.
 
 ## What it is
 
-Loupe is a single Windows application for the work that usually needs three: an image editor,
-a PDF tool, and a scanner utility.
+Loupe is a single Windows application for the work that usually needs four: an image editor, a PDF
+tool, a spreadsheet and a word processor.
 
-It is built around a real layer stack. Every picture, every line of text, every shape and every
-adjustment stays on its own layer, in folders, with masks, blend modes and non destructive effects,
-until you decide to flatten or export. Undo goes all the way back, including the free transform, the
-filters, the fills and the layer effects, each as a single step.
+A document opens as whatever it is. A photograph gets the layer stack, the brushes and the filters.
+A spreadsheet gets the grid, the formula bar and the cell formatting. A page of text gets real paper,
+with margins, headers and page numbers. The window follows: the tools that cannot answer the document
+in front of you are not greyed out, they are put away, and they come back with the document that
+wants them.
 
-It opens `.lpd` projects, PDFs, Photoshop files and every common picture format, and exports to nine
-formats with real per format options. It is quick on big documents: a blur on a twelve megapixel
-page takes about a second, and a session that opens and closes forty documents ends where it
-started, with no memory left behind.
+The picture side is built around a real layer stack. Every picture, every line of text, every shape
+and every adjustment stays on its own layer, in folders, with masks, blend modes and non destructive
+effects, until you decide to flatten or export. Undo goes all the way back, including the free
+transform, the filters, the fills and the layer effects, each as a single step.
+
+It is quick on big documents: a blur on a twelve megapixel page takes about a second, and a session
+that opens and closes forty documents ends where it started, with no memory left behind.
 
 ## Install
 
@@ -50,9 +54,47 @@ published SHA-256, and installs it for you.
 
 ---
 
+## Pages, and the tools to lay them out
+
+![A text document](docs/document.png)
+
+A text document is a real page, not a text box: A4, Letter, Legal, A3 or A5, portrait or landscape,
+with margins you set in millimetres. Qt breaks the text into pages as you type, the seam between two
+sheets is drawn where it falls, and the page count in the corner is the one that will come out of the
+printer.
+
+- **Paragraph styles**: body text and four heading levels, from the toolbar or the Document menu
+- **Type**: any font on the machine, any size, bold, italic, underline, text colour and highlight
+- **Layout**: the four alignments, line spacing, indents, bullet and numbered lists
+- **Insert**: pictures, tables, line breaks
+- **Headers and footers** carrying `{page}`, `{pages}` and `{title}`, with a switch for the first page
+- **Word count** under the page, live
+
+Export to PDF page by page, or save as `.docx`, `.odt`, `.html` or plain text. The same formats open.
+
+---
+
+## Spreadsheets
+
+![A spreadsheet](docs/spreadsheet.png)
+
+A grid with a formula bar, several sheets in a book, and the formatting a table actually needs.
+
+- **47 functions**, including `SUM`, `AVERAGE`, `IF`, `COUNTIF`, `INDEX`, `ROUND`, `STDEV` and the
+  text and date families, with ranges, absolute references and errors that say what went wrong
+- **Autosum** finds the run above or to the left of the cursor and totals it
+- **Number formats**: money, percentage, thousands, and decimals in or out one place at a time
+- **Cell style**: font and size, bold, italic, underline, text colour, fill, borders, both
+  alignments, wrapped text and merged cells
+- **Structure**: insert and delete rows and columns, freeze panes, sort, find and replace
+
+Opens and saves `.xlsx`, reads `.xlsm`, and reads and writes `.csv`.
+
+---
+
 ## Layers, masks, adjustments and effects
 
-The layer panel is the centre of the application: pixel layers, text layers, vector shapes, folders,
+The layer panel is the centre of the picture side: pixel layers, text layers, vector shapes, folders,
 adjustment layers and layer masks, with drag and drop reordering, colour tags, clipping masks,
 opacity, blend modes, lock and isolate.
 
@@ -175,7 +217,10 @@ the content rather than to the empty canvas around it.
 
 ## The interface
 
-- **Documents in tabs**, each with its own history, and layers can be dragged from one to another
+- **Documents in tabs**, of any kind side by side, each with its own history, and layers can be
+  dragged from one picture to another
+- **Tools that follow the document**: the brushes, the tool column and the picture panels are put
+  away on a spreadsheet or a page of text, and come back untouched with the next picture
 - **Dockable panels**: layers, history, pages, colour wheel, brush presets, text, info, histogram,
   swatches, notes, measurements, channels and properties, nested or floating, with saved workspaces
 - **Rulers, grid, guides, snapping and layer edges**, all switchable
@@ -198,6 +243,7 @@ English, French, Spanish, German, Italian, Portuguese, Japanese and Chinese, cho
 | `Ctrl+N` / `Ctrl+O` / `Ctrl+S` | New, open, save |
 | `Ctrl+E` | Export as |
 | `Ctrl+Z` / `Ctrl+Shift+Z` | Undo, redo |
+| `Ctrl+B` / `Ctrl+I` / `Ctrl+U` | Bold, italic, underline, in a spreadsheet or a page of text |
 | `Ctrl+T` | Free transform |
 | `Ctrl+Shift+F` | Layer effects |
 | `F5` / `Shift+F5` | Brush settings, gradient editor |
@@ -213,7 +259,9 @@ English, French, Spanish, German, Italian, Portuguese, Japanese and Chinese, cho
 
 | | |
 |---|---|
-| **Open** | `.lpd` and `.loupe` projects, `.pdf`, `.psd` and `.psb`, `.png`, `.jpg`, `.bmp`, `.webp`, `.gif`, `.tif` |
+| **Pictures** | `.lpd` and `.loupe` projects, `.pdf`, `.psd` and `.psb`, `.png`, `.jpg`, `.bmp`, `.webp`, `.gif`, `.tif` |
+| **Spreadsheets** | `.xlsx` both ways, `.xlsm` read, `.csv` both ways |
+| **Pages** | `.docx`, `.odt`, `.html` and `.txt` both ways, PDF out |
 | **Save** | `.lpd` project, keeping layers, folders, masks, text, vector shapes, adjustments and effects |
 | **Export** | PNG, JPEG, WEBP, TIFF, BMP, GIF, ICO, PDF, SVG |
 
@@ -224,17 +272,18 @@ positions and visibility.
 
 ## Under the hood
 
-Written from scratch in Python with PySide6 (Qt 6), NumPy for the pixel work, PyMuPDF for PDF, and
-Pillow and psd-tools for the formats Qt does not read natively. Packaged with PyInstaller and
-Inno Setup.
+Written from scratch in Python with PySide6 (Qt 6), NumPy for the pixel work, PyMuPDF for PDF,
+openpyxl and python-docx for the office formats, and Pillow and psd-tools for the pictures Qt does
+not read natively. Packaged with PyInstaller and Inno Setup.
 
 Every release is checked against a battery of automated tests that drive the real application: the
 tool set, the panels, the view, the notes, the ink cleaner, the layer panel, the history (every
 operation is undone and redone, and the picture is compared pixel by pixel at each step), project
-round trips, the layer effects, the brush engine, the gradients, the scan tools, and a hostile pass
-that closes documents in the middle of a gesture, opens files that lie about their format, and
-hammers the panels while documents come and go. Speed and memory are measured on every release: no
-operation over its budget, and nothing left behind after forty documents.
+round trips, the layer effects, the brush engine, the gradients, the scan tools, the formula engine,
+the spreadsheet and the page layout, and a hostile pass that closes documents in the middle of a
+gesture, opens files that lie about their format, and hammers the panels while documents come and go.
+Speed and memory are measured on every release: no operation over its budget, and nothing left behind
+after forty documents.
 
 ---
 
